@@ -73,7 +73,29 @@ fujikomalan/ipgeolocation-api-service:latest
 
 Here I am creating a Redis cluster in Elasticache, for that do the following.
 
+Go to ElastiCache dashboard in your AWS > Create cluster > and select "Create Redis cluster"
 
+1. In **Cluster mode**, select Disabled.
+
+2. In **Cluster info**, provide name and a discription(optional)
+
+3. In **Location** we can choose whether to host the cluster in the AWS Cloud or on premises. I am selecting **AWS Cloud** here. Multi-AZ should be enabled.
+
+4. In **Cluster settings**, change the Node type to "cache.t2.micro". Number of replicas should be 2. 
+
+5. In **Subnet group settings**, select "Choose existing subnet group".
+
+6. Select "Specify Availability Zones" in **Availability Zone placements**, and select the regions and replicas as per your requirement.
+
+7. Click on Next.
+
+8. In Advanced settings, Enable "Encryption at rest" under the **Security** section. Encryption key should be set as default. Select a security group too.
+
+9. Backup, Maintenance, and Logs sections are optional, configure if required.
+
+10. Give an appropriate Tag and click on Next. Then review the settings and click on **Create**.
+
+> *Please note that it will take some time to complete the creation of the redis cluster.*
 
 
 
