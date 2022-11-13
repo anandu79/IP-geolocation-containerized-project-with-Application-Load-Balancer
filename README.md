@@ -69,7 +69,7 @@ docker container run \
 fujikomalan/ipgeolocation-api-service:latest
 ```
 
-***In REDIS_HOST we will have to add the private IP address of the api-caching-instance1. If the server reboots, the IP address will change and we will have to edit the code again. In order to resolve this, we will create a private hosted zone instead and create a zone that points to the private IP address of api-caching-intsnace1. Or else we can create a Redis cluster in Elasticache and point it to the private hosted zone.***
+***In `REDIS_HOST` we will have to add the private IP address of the api-caching-instance1. If the server reboots, the IP address will change and we will have to edit the code again. In order to resolve this, we will create a private hosted zone instead and create a zone that points to the private IP address of api-caching-intsnace1. Or else we can create a Redis cluster in Elasticache and point it to the private hosted zone.***
 
 Here I am creating a Redis cluster in Elasticache, for that do the following.
 
