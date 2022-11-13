@@ -169,8 +169,56 @@ We can attach an existing IAM role to an instance by folowing the below steps:
 >1. Select the instance, choose **Actions**, **Security**, **Modify IAM role**.
 >2. Select the IAM role to attach to your instance, and choose **Save**.
 
-Now we can proceed to create the docker containers 
+Now we can proceed to create the docker containers in the servers api-service-instance1 and api-service-instance2.
  
+```
+docker container run \ 
+-d \ 
+-p 8081:8080 \ 
+--name ipgeolocation-api-service1 \ 
+--restart always \ 
+-e REDIS_PORT="6379" \ 
+-e REDIS_HOST="redis.ipgeolocation.local" \ 
+-e APP_PORT="8080" \ 
+-e API_KEY_FROM_SECRETSMANAGER="True" \ 
+-e SECRET_NAME="ipgeolocation-secret" \ 
+-e SECRET_KEY="ipgeolocation-api-key" \ 
+-e REGION_NAME="ap-south-1" \ 
+fujikomalan/ipgeolocation-api-service:latest
+```
+and
+
+```
+docker container run \ 
+-d \ 
+-p 8082:8080 \ 
+--name ipgeolocation-api-service2 \ 
+--restart always \ 
+-e REDIS_PORT="6379" \ 
+-e REDIS_HOST="redis.ipgeolocation.local" \ 
+-e APP_PORT="8080" \ 
+-e API_KEY_FROM_SECRETSMANAGER="True" \ 
+-e SECRET_NAME="ipgeolocation-secret" \ 
+-e SECRET_KEY="ipgeolocation-api-key" \ 
+-e REGION_NAME="ap-south-1" \ 
+fujikomalan/ipgeolocation-api-service:latest
+```
+
+Now we have created 2 containers in api-service-instance1.
+
+```
+docker container ls -a
+```
+
+Output:
+
+```
+CONTAINER ID   IMAGE                                          COMMAND            CREATED         STATUS         PORTS                                       NAMES
+7a8a6a155461   fujikomalan/ipgeolocation-api-service:latest   "python3 app.py"   8 seconds ago   Up 7 seconds   0.0.0.0:8082->8080/tcp, :::8082->8080/tcp   ipgeolocation-api-service2
+dfd6c1972aeb   fujikomalan/ipgeolocation-api-service:latest   "python3 app.py"   2 minutes ago   Up 2 minutes   0.0.0.0:8081->8080/tcp, :::8081->8080/tcp   ipgeolocation-api-service1
+```
+
+Now load `Public IPv4 DNS:8081/ip/8.8.8.8` and `Public IPv4 DNS:8082/ip/8.8.8.8`. We will receive an output as shown below.
 
 
 
