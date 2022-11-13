@@ -169,7 +169,7 @@ We can attach an existing IAM role to an instance by folowing the below steps:
 >1. Select the instance, choose **Actions**, **Security**, **Modify IAM role**.
 >2. Select the IAM role to attach to your instance, and choose **Save**.
 
-
+Now we can proceed to create the docker containers 
  
 
 
