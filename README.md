@@ -5,14 +5,14 @@ Here, I have created a program which provides us with the geolocation of an IP a
 ![docker](https://github.com/anandu79/IP-geolocation-containerized-project-with-Application-Load-Balancer/blob/main/images/docker.jpg?raw=true)
 
 For that, we have to launch 3 Ammazon Linux EC2 instances.
-I have changed their names to api-service-instance1, api-service-instance2, and api-caching-instance for better understanding.
+I have changed their names to api-service-instance1, api-service-instance2, and api-caching-instance1 for better understanding.
 
 We can change the hostname using:
 
 ```
 hostnamectl set-hostname api-service-instance1
 hostnamectl set-hostname api-service-instance2
-hostnamectl set-hostname api-caching-instance
+hostnamectl set-hostname api-caching-instance1
 ```
 
 Install docker in all 3 servers using the below command:
@@ -27,7 +27,7 @@ Enable docker service:
 systemctl enable docker.service
 ```
 
-## Docker container creation in api-caching-instance
+## Docker container creation in api-caching-instance1
 
 SSH into api-caching-instance and create a docker container using [redis](https://hub.docker.com/_/redis).
 
@@ -54,7 +54,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS   
 
 ## Container creation in api-service-instance1
 
-Now that we have created redis container in api-caching-instance, we have to create 2 docker containers ap-service-1 and ap-service-2 in api-service-instance1. For that, SSH into the instance and use the below command:
+Now that we have created redis container in api-caching-instance, we have to create 2 docker containers api-service-1 and api-service-2 in api-service-instance1. For that, SSH into the instance and use the below command:
 
 ```
 docker container run \ 
@@ -63,12 +63,15 @@ docker container run \
 --name api-service1 \ 
 --restart always \ 
 -e REDIS_PORT="6379" \ 
--e REDIS_HOST="private IP address of ap-caching-instance" \ 
+-e REDIS_HOST="private IP address of ap-caching-instance1" \ 
 -e APP_PORT="8080" \ 
 -e API_KEY="your API key from https://app.ipgeolocation.io/" \ 
 fujikomalan/ipgeolocation-api-service:latest
 ```
 
+***In REDIS_HOST we will have to add the private IP address of the api-caching-instance1. If the server reboots, the IP address will change and we will have to edit the code again. In order to resolve this, we will create a private hosted zone instead and create a zone that points to the private IP address of api-caching-intsnace1. Or else we can create a Redis cluster in Elasticache and point it to the private hosted zone.***
+
+Here I am creating a Redis cluster in Elasticache, for that do the following.
 
 
 
