@@ -99,8 +99,23 @@ Go to ElastiCache dashboard in your AWS > Create cluster > and select "Create Re
 
 After the creation of Redis cluster, go to Route53 and create a private hosted zone. I'm naming my private zone "ipgeolocation.local". Select the region according to your requirement, provide an appropriate tag and click on Create hosted zone. 
 
+Then, create a CNAME Record under the private zone "ipgeolocation.local" which points to the Primary endpoint of the redis cluster. Give an appropriate Record name as per your requirement.
+> Primary endpoint will be under the cluster details section in Elasticache.
 
+After that we can edit the `REDIS_HOST` section in the above command and it will look like:
 
+```
+docker container run \ 
+-d \ 
+-p 8081:8080 \ 
+--name api-service1 \ 
+--restart always \ 
+-e REDIS_PORT="6379" \ 
+-e REDIS_HOST="redis.ipgeolocation.local" \ 
+-e APP_PORT="8080" \ 
+-e API_KEY="your API key from https://app.ipgeolocation.io/" \ 
+fujikomalan/ipgeolocation-api-service:latest
+```
 
 
 
