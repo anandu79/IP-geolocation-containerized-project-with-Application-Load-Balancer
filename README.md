@@ -159,7 +159,18 @@ fujikomalan/ipgeolocation-api-service:latest
 
 > `SECRET_NAME` is the name provided to the secret that I have created in AWS secrets Manager. The `SECRET_KEY` can be obtained from **Secret value** section in the secret that we have created.
 
+***Even if we create the container, it won't work properly, because in order to fetch the key value, the container should have access to the Secrets manager, to access the secrets manager. In order to solve the issue, we will create an IAM role and attach it to api-service-instance1 and api-service-instance2.***
 
+So, create an IAM role and attach **SecretsManagerReadWrite** policy to it. After that, attach the IAM role to the instances api-service-instance1 and api-service-instance2. 
+
+We can attach an existing IAM role to an instance by folowing the below steps:
+
+
+>1. Select the instance, choose **Actions**, **Security**, **Modify IAM role**.
+>2. Select the IAM role to attach to your instance, and choose **Save**.
+
+
+ 
 
 
 
