@@ -222,13 +222,37 @@ Now load `Public IPv4 DNS:8081/ip/8.8.8.8` and `Public IPv4 DNS:8082/ip/8.8.8.8`
 
 ![output1](https://github.com/anandu79/IP-geolocation-containerized-project-with-Application-Load-Balancer/blob/main/images/output1.jpg)
 
+## Docker container creation in api-caching-instance2
 
+SSH into api-caching-instance2 and use the exact same commands as api-caching-instance1 to create containers.
 
+## Target group creation
 
+Now we have to create a target group. 
 
+1. On the navigation panel, under LOAD BALANCING, choose Target Groups.
 
+2. Choose Create target group.
 
+3. For Choose a target type, select Instances to register targets by instance ID.
 
+4. For Target group name, type a name for the target group. Select HTTP protocol and set protocol as 80. Protocol version should be set as HTTP1.
 
+5. In health checks section, go to "advanced healt checks" and set the success codes as 200-499.
+
+6. Provide an appropriate name tag if needed.
+
+7. Choose Next.
+
+8. Register targets
+
+When registering the targets, select api-service-instance1, change Ports for the selected instances to 8081, click on **Include as pending below**.
+Again select api-service-instance1, change Ports for the selected instances to 8082, click on **Include as pending below**.
+
+Follow the same procedure when registering targets for api-service-instance2.
+
+9. Click on **Create target group**.
+
+## Appliocation load balancer creation
 
 
