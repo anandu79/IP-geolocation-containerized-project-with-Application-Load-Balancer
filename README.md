@@ -117,7 +117,27 @@ docker container run \
 fujikomalan/ipgeolocation-api-service:latest
 ```
 
+In `API_KEY` section, we have to add our personal API key from the IP geolocation app directly and it is not secure. So in order to add the API key, we have to use a service called "Secrets Manager" in AWS.
+> AWS Secrets Manager helps you protect access to your applications, services, and IT resources. You can easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle.
 
+For that, go to AWS Secrets Manager > Click on "Store a new secret".
+
+1. In **Secret type**, select "Other type of secret". In **Key/value pairs**, select "Plaintext" and add your API key in the format shown below:
+
+```
+{
+    "ipgeolocation-api-key":"your API key from https://app.ipgeolocation.io/"
+}
+```
+
+Then, in **Encryptio key** select "aws/secretsmanager" and click on Next.
+
+2. Next, **Configure secret**. Provide an appropriate Secret name, Description, and add an appropriate Name tag.
+Then click on Next.
+
+3. Next, we have to configure rotation. It's an op[tional setting and do it if required.
+
+4. Review the secret and click on "store" to complete the creation.
 
 
 
