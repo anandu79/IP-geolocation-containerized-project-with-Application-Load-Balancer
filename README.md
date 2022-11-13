@@ -4,10 +4,10 @@ Here, I have created a program which provides us with the geolocation of an IP a
 
 ![docker](https://github.com/anandu79/IP-geolocation-containerized-project-with-Application-Load-Balancer/blob/main/images/docker.jpg?raw=true)
 
-For that, we have to launch 3 Ammazon Linux EC2 instances.
+For that, we have to launch 3 Amazon Linux EC2 instances.
 I have changed their names to api-service-instance1, api-service-instance2, and api-caching-instance1 for better understanding.
 
-We can change the hostname using:
+We can change the hostname using the below command after loggin into those servers:
 
 ```
 hostnamectl set-hostname api-service-instance1
@@ -24,6 +24,7 @@ yum install docker -y
 Enable docker service:
 
 ```
+systemctl restart docker.service
 systemctl enable docker.service
 ```
 
@@ -281,7 +282,7 @@ To configure your load balancer and listener:
 
 Now the Load Balancer has been created.
 
-###### Setting HTTP to HTTPS redirection
+###### **Setting HTTP to HTTPS redirection**
 
 1. Go to the **load balancers section**, select the load balancer that we have created, and click on **listeners**. Select **Add listener**.
 
