@@ -139,6 +139,25 @@ Then click on Next.
 
 4. Review the secret and click on "store" to complete the creation.
 
+Now, we can change the command to create docker container in api-service-instance1 accrodingly. The command will look like:
+
+```
+docker container run \ 
+-d \ 
+-p 8081:8080 \ 
+--name ipgeolocation-api-service \ 
+--restart always \ 
+-e REDIS_PORT="6379" \ 
+-e REDIS_HOST="redis.ipgeolocation.local" \ 
+-e APP_PORT="8080" \ 
+-e API_KEY_FROM_SECRETSMANAGER="True" \ 
+-e SECRET_NAME="ipgeolocation-secret" \ 
+-e SECRET_KEY="ipgeolocation-api-key" \ 
+-e REGION="ap-south-1" \ 
+fujikomalan/ipgeolocation-api-service:latest
+```
+
+> `SECRET_NAME` is the name provided to the secret that I have created in AWS secrets Manager. The `SECRET_KEY` can be obtained from **Secret value** section in the secret that we have created.
 
 
 
