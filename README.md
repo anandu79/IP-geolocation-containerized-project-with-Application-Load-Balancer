@@ -97,7 +97,7 @@ Go to ElastiCache dashboard in your AWS > Create cluster > and select "Create Re
 
 > *Please note that it will take some time to complete the creation of the redis cluster.*
 
-
+After the creation of Redis cluster, go to Route53 and create a private hosted zone. I'm naming my private zone "ipgeolocation.local". Select the region according to your requirement, provide an appropriate tag and click on Create hosted zone. 
 
 
 
