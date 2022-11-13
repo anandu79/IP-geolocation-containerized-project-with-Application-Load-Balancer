@@ -220,6 +220,7 @@ dfd6c1972aeb   fujikomalan/ipgeolocation-api-service:latest   "python3 app.py"  
 
 Now load `Public IPv4 DNS:8081/ip/8.8.8.8` and `Public IPv4 DNS:8082/ip/8.8.8.8`. We will receive an output as shown below.
 
+![output1](https://github.com/anandu79/IP-geolocation-containerized-project-with-Application-Load-Balancer/blob/main/images/output1.jpg)
 
 
 
