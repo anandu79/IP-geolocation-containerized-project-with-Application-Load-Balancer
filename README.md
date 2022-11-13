@@ -230,19 +230,19 @@ SSH into api-caching-instance2 and use the exact same commands as api-caching-in
 
 Now we have to create a target group. 
 
-1. On the navigation panel, under LOAD BALANCING, choose Target Groups.
+1. On the navigation panel, under LOAD BALANCING, choose **Target Groups**.
 
-2. Choose Create target group.
+2. Choose **Create target group**.
 
-3. For Choose a target type, select Instances to register targets by instance ID.
+3. For **Choose a target type**, select Instances to register targets by instance ID.
 
-4. For Target group name, type a name for the target group. Select HTTP protocol and set protocol as 80. Protocol version should be set as HTTP1.
+4. For **Target group name**, type a name for the target group. Select HTTP protocol and set protocol as 80. Protocol version should be set as HTTP1.
 
-5. In health checks section, go to "advanced healt checks" and set the success codes as 200-499.
+5. In **health checks section**, go to "advanced healt checks" and set the success codes as 200-499.
 
 6. Provide an appropriate name tag if needed.
 
-7. Choose Next.
+7. Choose **Next**.
 
 8. Register targets
 
@@ -254,5 +254,29 @@ Follow the same procedure when registering targets for api-service-instance2.
 9. Click on **Create target group**.
 
 ## Appliocation load balancer creation
+
+Next, we havew to create an application load balancer using the target group that we have created.
+
+To configure your load balancer and listener:
+
+1. In the navigation pane, under Load Balancing, choose **Load Balancers**.
+
+2. Choose **Create Load Balancer**.
+
+3. Under Application Load Balancer, choose **Create**.
+
+4. In **Basic configuration**, give a name for the load balancer
+
+5. In **Network mapping** section, select the VPC that you used for your EC2 instances. For **Mappings**, select two or more Availability Zones and corresponding subnets.
+
+6. For **Security groups**, select a security group. 
+
+7. In **Listeners and routing**, select HTTPS protocol and the port number should be 443. In Default action, select the target group that we have created above.
+
+8. In **Secure listener settings**, select an existing ACM certificate or request a new one. 
+
+9. Then, Add a tag to categorize your load balancer.
+
+10. Click on **create load balancer**.
 
 
