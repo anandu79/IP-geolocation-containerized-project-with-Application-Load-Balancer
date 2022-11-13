@@ -279,4 +279,27 @@ To configure your load balancer and listener:
 
 10. Click on **create load balancer**.
 
+Now the Load Balancer has been created.
+
+###### Setting HTTP to HTTPS redirection
+
+1. Go to the **load balancers section**, select the load balancer that we have created, and click on **listeners**. Select **Add listener**.
+
+2. In **Listener details**, select HTTP protocol and the port number will be 80. 
+
+3. In **Default actions**, click on add actions dropdown and select **Redirect**. select HTTPS protocol and the port number should be 443. 
+
+4. Provide a **Tag** if needed.
+
+5. Click on **Add**.
+
+
+
+
+
+
+
+
+
+
 
