@@ -97,7 +97,7 @@ Go to ElastiCache dashboard in your AWS > Create cluster > and select "Create Re
 
 > *Please note that it will take some time to complete the creation of the redis cluster.*
 
-After the creation of Redis cluster, go to Route53 and create a private hosted zone. I'm naming my private zone "ipgeolocation.local". Select the region according to your requirement, provide an appropriate tag and click on Create hosted zone. 
+After the creation of Redis cluster, go to [Route53](https://console.aws.amazon.com/route53/) and create a private hosted zone. I'm naming my private zone "ipgeolocation.local". Select the region according to your requirement, provide an appropriate tag and click on Create hosted zone. 
 
 Then, create a CNAME Record under the private zone "ipgeolocation.local" which points to the Primary endpoint of the redis cluster. Give an appropriate Record name as per your requirement.
 > Primary endpoint will be under the cluster details section in Elasticache.
@@ -130,12 +130,12 @@ For that, go to AWS Secrets Manager > Click on "Store a new secret".
 }
 ```
 
-Then, in **Encryptio key** select "aws/secretsmanager" and click on Next.
+Then, in **Encryption key** select "aws/secretsmanager" and click on Next.
 
 2. Next, **Configure secret**. Provide an appropriate Secret name, Description, and add an appropriate Name tag.
 Then click on Next.
 
-3. Next, we have to configure rotation. It's an op[tional setting and do it if required.
+3. Next, we have to configure rotation. It's an optional setting and do it if required.
 
 4. Review the secret and click on "store" to complete the creation.
 
@@ -292,6 +292,22 @@ Now the Load Balancer has been created.
 4. Provide a **Tag** if needed.
 
 5. Click on **Add**.
+
+## Pointing public Domain name to the Application Load Balancer
+
+1. Go to [Route53](https://console.aws.amazon.com/route53/) console in your AWS account.
+
+2. In the navigation pane, choose Hosted zones.
+
+3. Choose the name of the hosted zone that has the domain name that you want to use to route traffic to your load balancer.
+
+4. Choose Create record.
+
+5. Provide an appropriate **Record name**.
+
+6. Turn on **Alias**.
+
+7. In **Route traffic to**, **Choose Alias to Application and Classic Load Balancer** as endpointr, then choose the Region that the endpoint is from, Choose the load balancer that we have created.
 
 
 
