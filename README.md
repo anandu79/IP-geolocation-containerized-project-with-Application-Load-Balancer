@@ -309,9 +309,12 @@ Now the Load Balancer has been created.
 
 7. In **Route traffic to**, **Choose Alias to Application and Classic Load Balancer** as endpointr, then choose the Region that the endpoint is from, Choose the load balancer that we have created.
 
+## Conclusion
 
+Now load redis.domain.com/ip/8.8.8.8 in your browser and we will receive the below output. Each time when we refresh the URL, we can see the `apiServer` (docker containers) changing. 
 
-
+![output2](https://github.com/anandu79/IP-geolocation-containerized-project-with-Application-Load-Balancer/blob/main/images/output2.jpg)
+![output3](https://github.com/anandu79/IP-geolocation-containerized-project-with-Application-Load-Balancer/blob/main/images/output3.jpg)
 
 
 
