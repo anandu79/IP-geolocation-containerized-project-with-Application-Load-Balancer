@@ -55,7 +55,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS   
 
 ## Container creation in api-service-instance1
 
-Now that we have created redis container in api-caching-instance, we have to create 2 docker containers api-service-1 and api-service-2 in api-service-instance1. For that, SSH into the instance and use the below command:
+Now that we have created redis container in api-caching-instance1, we have to create 2 docker containers api-service-1 and api-service-2 in api-service-instance1. For that, SSH into the instance and use the below command:
 
 ```
 docker container run \ 
@@ -298,7 +298,7 @@ Now the Load Balancer has been created.
 
 1. Go to [Route53](https://console.aws.amazon.com/route53/) console in your AWS account.
 
-2. In the navigation pane, choose Hosted zones.
+2. In the navigation panel, choose Hosted zones.
 
 3. Choose the name of the hosted zone that has the domain name that you want to use to route traffic to your load balancer.
 
